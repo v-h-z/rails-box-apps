@@ -1,0 +1,6 @@
+<h1>Transcripts : </h1>
+<ul>
+<% @transcripts.each do |transcript| %>
+  <li> <%= link_to "#{transcript.title} - #{transcript.created_at.to_date}", transcript_path(transcript)  %> </li>
+<% end %>
+</ul>
