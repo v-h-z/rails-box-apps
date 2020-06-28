@@ -37,6 +37,7 @@ yarn-debug.log*
 # Ignore .env file containing credentials.
 .env*
 /google
+/config/secrets/*
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store

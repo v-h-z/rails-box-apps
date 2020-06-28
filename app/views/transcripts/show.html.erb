@@ -1,2 +1,13 @@
 <h1> <%= @transcript.title %> </h1>
 <h4><%= @transcript.created_at.to_date %></h4>
+<ul>
+  <li>Speakers: <%= @transcript.speakers %></li>
+  <li>File: <% if @transcript.soundfile.attached? %>
+      <%= @transcript.soundfile.service_url %> <br/>
+      <%= link_to @transcript.soundfile.filename, @transcript.soundfile, target: '_blank' %> <br/>
+      <%= audio_tag(url_for(@transcript.soundfile), controls: true) %> <br/>
+  <% else %>
+    <p>no soundfile</p>
+  <% end %></li>
+</ul>
+<%= link_to 'back to list', transcripts_path %>

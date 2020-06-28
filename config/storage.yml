@@ -15,11 +15,17 @@ local:
 #   bucket: your_own_bucket
 
 # Remember not to checkin your GCS keyfile to a repository
-# google:
-#   service: GCS
-#   project: your_project
-#   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
-#   bucket: your_own_bucket
+google:
+  service: GCS
+  project: skilled-outlook-280513
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
+  bucket: sound_for_text_to_speech
+
+google_dev:
+  service: GCS
+  project: skilled-outlook-280513
+  credentials: <%= Rails.root.join("config/secrets/skilled-outlook-280513-5b9a706d3c7a.json") %>
+  bucket: sound_for_text_to_speech
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
