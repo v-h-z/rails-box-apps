@@ -3,10 +3,10 @@ require "google/cloud/speech"
 class GoogleTranscriptLongJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(soundfile, speakers)
     # Do something later
     # connect
-    google_example
+    google_example(soundfile, speakers)
   end
 
   def connect
@@ -24,8 +24,8 @@ class GoogleTranscriptLongJob < ApplicationJob
     end
   end
 
-  def google_example
-    storage_path = "gs://sound_for_text_to_speech/test-WAV.wav"
+  def google_example(soundfile, speakers)
+    storage_path = "gs://sound_for_text_to_speech/" + soundfile.key
 
     speech = Google::Cloud::Speech.speech
 
@@ -37,8 +37,8 @@ class GoogleTranscriptLongJob < ApplicationJob
                enable_automatic_punctuation: true,
                "diarization_config": {
                  "enable_speaker_diarization": true,
-                 "min_speaker_count": 2,
-                 "max_speaker_count": 2,
+                 "min_speaker_count": speakers,
+                 "max_speaker_count": speakers,
                }
               }
     audio = { uri: storage_path }
