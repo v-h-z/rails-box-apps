@@ -18,7 +18,7 @@ local:
 google:
   service: GCS
   project: skilled-outlook-280513
-  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].to_json %>
   bucket: sound_for_text_to_speech
 
 google_dev:
