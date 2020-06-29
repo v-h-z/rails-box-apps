@@ -7,9 +7,10 @@ class PagesController < ApplicationController
   def transcript
     @file = Transcript.find(params[:transcript_id])
     @operation = GoogleTranscriptLongJob.perform_now(@file.soundfile, @file.speakers)
-    @file.record.update(result: @operation)
+    @file.update(result: @operation)
     raise
     @results = @operation.response.results
     @alternatives = @results.last.alternatives
+    @alt = @file.result
   end
 end
