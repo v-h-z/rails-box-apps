@@ -5,7 +5,7 @@
   <% if word.speaker_tag != speaker %>
     <hr>
     <h2><%= "SPEAKER #{word.speaker_tag}" %></h2>
-    <h5><%= "TIMECODE: 00:#{(word.start_time.seconds / 60).to_s.rjust(2,'0')}:#{(word.start_time.seconds-(word.start_time.seconds / 60 * 60)).to_s.rjust(2,'0')}:#{(25/(1000000000/word.start_time.nanos)).to_s.rjust(2,'0')} " %></h5>
+    <h5><%= "TIMECODE: 00:#{(word.start_time.seconds / 60).to_s.rjust(2,'0')}:#{(word.start_time.seconds-(word.start_time.seconds / 60 * 60)).to_s.rjust(2,'0')}:#{(word.start_time.nanos/1000000000*25).to_s.rjust(2,'0')} " %></h5>
   <% end %>
   <span class=<%= "speaker#{word.speaker_tag}" %>> <%= word.word %> </span>
   <% speaker = word.speaker_tag %>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get 'random', to: 'pages#random'
+  get 'message', to: 'pages#message'
   get '/transcript-manual', to: 'pages#transcript'
   resources :transcripts do
     get '/transcript-manual', to: 'pages#transcript', as: 'exec'
